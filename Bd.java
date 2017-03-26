@@ -3,13 +3,14 @@ public class Bd {
     private String names;
     private int haight;
     private int width;
+    private int langth;
     private int coordX;
     private int coordY;
-    private int coordZ;
+    private int coordZ1;
     private int ploskost;
     private int ryadom;
     private int angle;
-    private int angleY;
+
 
     public Bd(String names,int width, int haight,int coordX,int coordY,int ploskost,int ryadom, int angle){
         this.width=width;
@@ -21,9 +22,6 @@ public class Bd {
         this.ryadom=ryadom;
         this.angle=angle;
 
-    }
-    public double perimetr(){
-     return width+haight+coordX+coordY;
     }
     public String names(){
         return names;
