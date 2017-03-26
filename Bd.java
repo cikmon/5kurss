@@ -3,24 +3,29 @@ public class Bd {
     private String names;
     private int haight;
     private int width;
-    private int langth;
+    private int length;
     private int coordX;
     private int coordY;
-    private int coordZ1;
-    private int ploskost;
+    private int coordZ;
     private int ryadom;
-    private int angle;
+    private int angleX;
+    private int angleY;
+    private int angleZ;
 
 
-    public Bd(String names,int width, int haight,int coordX,int coordY,int ploskost,int ryadom, int angle){
+    public Bd(String names,int width, int haight,int length,int coordX,int coordY,int coordZ,int ryadom, int angleX,int angleY,int angleZ){
         this.width=width;
         this.haight=haight;
+        this.length=length;
         this.names=names;
         this.coordX=coordX;
         this.coordY=coordY;
-        this.ploskost=ploskost;
+        this.coordZ=coordZ;
         this.ryadom=ryadom;
-        this.angle=angle;
+        this.angleX=angleX;
+        this.angleY=angleY;
+        this.angleZ=angleZ;
+
 
     }
     public String names(){
@@ -33,13 +38,11 @@ public class Bd {
     public int coordX(){
         return coordX;
     }
-    public int coordY(){
-        return coordY;
-    }
-    public int ploskost(){
-        return ploskost;
-    }
+    public int coordY(){return coordY;}
+    public int coordZ(){return coordZ;}
     public int ryadom(){return  ryadom;}
-    public int angle(){return  angle;}
+    public int angleX(){return  angleX;}
+    public int angleY(){return  angleY;}
+    public int angleZ(){return  angleZ;}
 
 }

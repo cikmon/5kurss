@@ -35,8 +35,11 @@ public class Controller {
     public TextField coordXform;
     public TextField angleform;
 
-    int WrazmerPloskost1=0;int WrazmerPloskost2=0;int WrazmerPloskost3=0;int WrazmerPloskost4=0;int WrazmerPloskost5=0;int WrazmerPloskost6=0;
-    int HrazmerPloskost1=0;int HrazmerPloskost2=0;int HrazmerPloskost3=0;int HrazmerPloskost4=0;int HrazmerPloskost5=0;int HrazmerPloskost6=0;
+    private int WrazmerKorpusa=0;
+    private int HrazmerKorpusa=0;
+    private int LrazmerKorpusa=0;
+    private int ThicknessRrazmerKorpusa=0;
+
 
     int n=0;int n12=0;
     int ploskost=0;
@@ -94,20 +97,20 @@ public class Controller {
 
 
         for(int i=0;i<rrr;i++) openrazb[i]=(open1[i]).split(";");
-        System.out.println(openrazb[rrr-1][7]);
 
-        WrazmerPloskost1=Integer.parseInt(openrazb[1][0]);HrazmerPloskost1=Integer.parseInt(openrazb[1][1]);
-        WrazmerPloskost2=Integer.parseInt(openrazb[1][2]);HrazmerPloskost2=Integer.parseInt(openrazb[1][3]);
-        WrazmerPloskost3=Integer.parseInt(openrazb[1][4]);HrazmerPloskost3=Integer.parseInt(openrazb[1][5]);
-        WrazmerPloskost4=Integer.parseInt(openrazb[1][6]);HrazmerPloskost4=Integer.parseInt(openrazb[1][7]);
-        WrazmerPloskost5=Integer.parseInt(openrazb[1][8]);HrazmerPloskost5=Integer.parseInt(openrazb[1][9]);
-        WrazmerPloskost6=Integer.parseInt(openrazb[1][10]);HrazmerPloskost6=Integer.parseInt(openrazb[1][11]);
+        WrazmerKorpusa=Integer.parseInt(openrazb[1][0]);HrazmerKorpusa=Integer.parseInt(openrazb[1][1]);
+        LrazmerKorpusa=Integer.parseInt(openrazb[1][0]);ThicknessRrazmerKorpusa=Integer.parseInt(openrazb[1][1]);
+
+
 
         for(int i=3;i<rrr;i++){
 
-            try {reactangle[i-3]= new Bd("№"+(i-2)+"  "+openrazb[i][0],Integer.parseInt(openrazb[i][1]),
+            try {reactangle[i-3]= new Bd("№"+openrazb[i][0],Integer.parseInt(openrazb[i][1]),
                     Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]),Integer.parseInt(openrazb[i][4]),
-                    Integer.parseInt(openrazb[i][5]),Integer.parseInt(openrazb[i][6]),Integer.parseInt(openrazb[i][7]));
+                    Integer.parseInt(openrazb[i][5]),
+                    Integer.parseInt(openrazb[i][6]),
+                    Integer.parseInt(openrazb[i][7]),
+                    Integer.parseInt(openrazb[i][8]),Integer.parseInt(openrazb[i][9]),Integer.parseInt(openrazb[i][10]));
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Неверный формат строк!");
@@ -136,10 +139,9 @@ public class Controller {
         //alert.setTitle("AddressApp");
        // alert.setHeaderText("About");
        // alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
-        System.out.println(ipl1+" "+ipl2+" "+ipl3+" "+ipl4+" "+ipl5+" "+ipl6+" ");
         alert.showAndWait();
     }
-
+/*
     @FXML
     private void handleSave(){
 
@@ -256,12 +258,7 @@ public class Controller {
         String ba1= angleform.getText(); int ba2=0;
         if(angleform.getText().trim().length() ==0) ba2=0; else ba2=Integer.parseInt(ba1);
 
-/*
-        combobox1.getSelectionModel().selectedIndexProperty().
-                addListener((ObservableValue<? extends Number> ov1, Number old_val1, Number new_val1)->{
-                    n=new_val1.intValue(); System.out.println("combobox1 "+n);
-                });
-*/
+
 
 
 
@@ -292,12 +289,6 @@ public class Controller {
         combobox4.setItems(list3);
         combobox4.getSelectionModel().select(ploskostpostr);
 
-/*
-        combobox1.getSelectionModel().selectedIndexProperty().
-                addListener((ObservableValue<? extends Number> ov1, Number old_val1, Number new_val1)->{
-                    n=new_val1.intValue(); System.out.println("combobox1 "+n);
-                });*/
-
         combobox2.getSelectionModel().selectedIndexProperty().
                 addListener((ObservableValue<? extends Number> ov2, Number old_val2, Number new_val2)->{
                     ryadom=new_val2.intValue();
@@ -318,21 +309,19 @@ public class Controller {
         namesform.clear();
         combobox2.getSelectionModel().select(0);
 
-
-
     }
-
+*/
     @FXML
     private void handleLocaterazmesh() throws IOException {
-        metodrazmesh(); metodproverka();
-        metodrazmeshryadom();
-        metodrazmeshostaln();
+      //  metodrazmesh(); metodproverka();
+      //  metodrazmeshryadom();
+      //  metodrazmeshostaln();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText("Расчеты завершились.");
         alert.showAndWait();
 
         System.out.println("ok");}
-
+/*
     @FXML
     private void handleLocate() throws IOException {
        // if(ploskostpostr==0){
@@ -385,11 +374,14 @@ public class Controller {
         stage.show();
         System.out.println(ploskostpostr+"  "+nn);
     }
+
+
+    /*
     private void metodrazmesh(){
        // int[][] qwertyy =new int[2][3000000];
         ipl1=0;ipl2=0;ipl3=0;ipl4=0;ipl5=0;ipl6=0;
         //создали цикл для размещения фигур с заданными координатами
-//hjgjhgjg
+
 
         for(int i=0;i<n;i++) {
            // Ploskosti razmeshenie1=ploskost1[i];
@@ -959,6 +951,8 @@ public class Controller {
 
 
     }
+    */
+    /*
     private void metodrazmeshryadom() {
 
         for (int i = 0; i < n; i++) {//переборка всего массива
@@ -1150,7 +1144,8 @@ public class Controller {
         }
 
     }
-
+    */
+/*
     private void metodrazmeshostaln() {
         //переборка всего массива
         for (int i = 0; i < n; i++) {
@@ -1254,7 +1249,7 @@ public class Controller {
 
     }
 
-
+*/
 
 
 
