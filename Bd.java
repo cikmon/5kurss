@@ -8,7 +8,7 @@ public class Bd {
     private int ploskost;
     private int ryadom;
     private int angle;
-
+    private int angleY;
 
     public Bd(String names,int width, int haight,int coordX,int coordY,int ploskost,int ryadom, int angle){
         this.width=width;
