@@ -5,6 +5,7 @@ public class Bd {
     private int width;
     private int coordX;
     private int coordY;
+    private int coordZ;
     private int ploskost;
     private int ryadom;
     private int angle;
