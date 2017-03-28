@@ -70,10 +70,10 @@ public class Controller {
 
     private void handleOpen() throws IOException {
         //String fileName = "/Users/prologistic/source.txt";
-       // readUsingFiles(fileName);
-        String[] open1=new String[10000];
-        String[][] openrazb=new String[10000][20];
-        int rrr=0;
+        // readUsingFiles(fileName);
+        String[] open1 = new String[10000];
+        String[][] openrazb = new String[10000][20];
+        int rrr = 0;
         JFileChooser fileopen = new JFileChooser();
         int ret = fileopen.showDialog(null, "Открыть файл");
         if (ret == JFileChooser.APPROVE_OPTION) {
@@ -86,7 +86,7 @@ public class Controller {
             String line = reader.readLine();
             while (line != null) {
                 System.out.println(line);
-                open1[rrr]=line;
+                open1[rrr] = line;
                 // считываем остальные строки в цикле
                 line = reader.readLine();
 
@@ -96,28 +96,30 @@ public class Controller {
         }
 
 
-        for(int i=0;i<rrr;i++) openrazb[i]=(open1[i]).split(";");
+        for (int i = 0; i < rrr; i++) openrazb[i] = (open1[i]).split(";");
 
-        WrazmerKorpusa=Integer.parseInt(openrazb[1][0]);HrazmerKorpusa=Integer.parseInt(openrazb[1][1]);
-        LrazmerKorpusa=Integer.parseInt(openrazb[1][0]);ThicknessRrazmerKorpusa=Integer.parseInt(openrazb[1][1]);
+        WrazmerKorpusa = Integer.parseInt(openrazb[1][0]);
+        HrazmerKorpusa = Integer.parseInt(openrazb[1][1]);
+        LrazmerKorpusa = Integer.parseInt(openrazb[1][0]);
+        ThicknessRrazmerKorpusa = Integer.parseInt(openrazb[1][1]);
 
 
+        for (int i = 3; i < rrr; i++) {
 
-        for(int i=3;i<rrr;i++){
-
-            try {reactangle[i-3]= new Bd("№"+openrazb[i][0],Integer.parseInt(openrazb[i][1]),
-                    Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]),Integer.parseInt(openrazb[i][4]),
-                    Integer.parseInt(openrazb[i][5]),
-                    Integer.parseInt(openrazb[i][6]),
-                    Integer.parseInt(openrazb[i][7]),
-                    Integer.parseInt(openrazb[i][8]),Integer.parseInt(openrazb[i][9]),Integer.parseInt(openrazb[i][10]));
+            try {
+                reactangle[i - 3] = new Bd("№" + openrazb[i][0], Integer.parseInt(openrazb[i][1]),
+                        Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]), Integer.parseInt(openrazb[i][4]),
+                        Integer.parseInt(openrazb[i][5]),
+                        Integer.parseInt(openrazb[i][6]),
+                        Integer.parseInt(openrazb[i][7]),
+                        Integer.parseInt(openrazb[i][8]), Integer.parseInt(openrazb[i][9]), Integer.parseInt(openrazb[i][10]));
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Неверный формат строк!");
                 alert.showAndWait();
             }
         }
-        n=rrr-3;
+        n = rrr - 3;
         combobox4.setItems(list3);
         combobox4.getSelectionModel().select(ploskostpostr);
 
@@ -126,9 +128,35 @@ public class Controller {
 
 
         combobox4.getSelectionModel().selectedIndexProperty().
-                addListener((ObservableValue<? extends Number> ov4, Number old_val4, Number new_val4)->{
-                    ploskostpostr=new_val4.intValue();
+                addListener((ObservableValue<? extends Number> ov4, Number old_val4, Number new_val4) -> {
+                    ploskostpostr = new_val4.intValue();
                 });
+        Ploskosti[] sssd = new Ploskosti[1000];
+
+        sssd[0]=new Ploskosti("sads",(short)(Math.random()*333),(short)1,(short)1,(short)1,(short)1,(short)1,(short)1,(short)15000,
+                35000001,4000001,(short)35000001,(short)35000001,(short)35000001,(short)35000001);
+            sssd[0].dobavlpixels((short)3,(short)3,(short)3000,35000000);
+
+/*
+        for(int j=0;j<100;j++) {
+            sssd[j]=new Ploskosti("sads",(short)(Math.random()*333),(short)1,(short)1,(short)1,(short)15000,
+                35000001,35000001,35000001,35000001,35000001,35000001);
+            for (int i = 0; i < 3000000; i++) {
+                sssd[j].dobavlpixels((short)1000, (short)1000,(short) 1000, i);
+                sssd[j].dobavlpixels2((short)1000, (short)1000,(short) 1000, i);
+                sssd[j].dobavlpixels3((short)1000, (short)1000,(short) 1000, i);
+                sssd[j].dobavlpixels4((short)1000, (short)1000,(short) 1000, i);
+                sssd[j].dobavlpixels5((short)1000, (short)1000,(short) 1000, i);
+                sssd[j].dobavlpixels6((short)1000, (short)1000,(short) 1000, i);
+            }
+        }
+*/
+        System.out.println(" " + sssd[0].pixels(2,35000000));
+        System.out.println("ok");
+//System.out.println("  dfs"+ sssd[188].pixels(0,199999)+" "+sssd[188].pixels(1,199999)+" "+sssd[188].pixels(2,199999));
+
+
+
 
 
     }
