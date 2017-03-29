@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
+import java.util.Arrays;
 
 public class Controller {
     public TextField namesform;
@@ -40,20 +41,18 @@ public class Controller {
     private int LrazmerKorpusa=0;
     private int ThicknessRrazmerKorpusa=0;
 
+    private Bd [] bd;
+    private Ploskosti[] osnovnoi;
+    private Ploskosti[] ryadom;
+    private Ploskosti[] ostalnie;
+
+
+    private int kolvosnaclonom=0;
 
     int n=0;int n12=0;
     int ploskost=0;
-    int ryadom;
     int ploskostpostr=0;
-    int ipl1=0;int ipl2=0;int ipl3=0;int ipl4=0;int ipl5=0;int ipl6=0;
-    private Bd [] reactangle = new Bd[30000];
 
-    private Ploskosti[] ploskost1= new Ploskosti[3000];
-    private Ploskosti[] ploskost2= new Ploskosti[3000];
-    private Ploskosti[] ploskost3= new Ploskosti[3000];
-    private Ploskosti[] ploskost4= new Ploskosti[3000];
-    private Ploskosti[] ploskost5= new Ploskosti[3000];
-    private Ploskosti[] ploskost6= new Ploskosti[3000];
 
     private JFXPanel primaryStage;
     private   ObservableList<String> list= FXCollections.observableArrayList("Cоздание обьекта №1");
@@ -103,23 +102,28 @@ public class Controller {
         LrazmerKorpusa = Integer.parseInt(openrazb[1][0]);
         ThicknessRrazmerKorpusa = Integer.parseInt(openrazb[1][1]);
 
-
+        n = rrr - 3;
+        bd=new Bd[n];
         for (int i = 3; i < rrr; i++) {
-
+            int mmm[]=new int[7];
+            if(openrazb[i][4].trim().length()==0)mmm[0]=-1000;else mmm[0]=Integer.parseInt(openrazb[i][4]);
+            if(openrazb[i][5].trim().length()==0)mmm[1]=-1000;else mmm[1]=Integer.parseInt(openrazb[i][5]);
+            if(openrazb[i][6].trim().length()==0)mmm[2]=-1000;else mmm[2]=Integer.parseInt(openrazb[i][6]);
+            if(openrazb[i][7].trim().length()==0)mmm[3]=-1000;else mmm[3]=Integer.parseInt(openrazb[i][7]);
+            if(openrazb[i][8].trim().length()==0)mmm[4]=-1000;else mmm[4]=Integer.parseInt(openrazb[i][8]);
+            if(openrazb[i][9].trim().length()==0)mmm[5]=-1000;else mmm[5]=Integer.parseInt(openrazb[i][9]);
+            if(openrazb[i][10].trim().length()==0)mmm[6]=-1000;else mmm[6]=Integer.parseInt(openrazb[i][10]);
             try {
-                reactangle[i - 3] = new Bd("№" + openrazb[i][0], Integer.parseInt(openrazb[i][1]),
-                        Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]), Integer.parseInt(openrazb[i][4]),
-                        Integer.parseInt(openrazb[i][5]),
-                        Integer.parseInt(openrazb[i][6]),
-                        Integer.parseInt(openrazb[i][7]),
-                        Integer.parseInt(openrazb[i][8]), Integer.parseInt(openrazb[i][9]), Integer.parseInt(openrazb[i][10]));
+                bd[i - 3] = new Bd("№" +(i-2)+" "+ openrazb[i][0], Integer.parseInt(openrazb[i][1]),
+                        Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]), mmm[0],
+                        mmm[1], mmm[2], mmm[3], mmm[4], mmm[5], mmm[6]);
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Неверный формат строк!");
                 alert.showAndWait();
             }
         }
-        n = rrr - 3;
+
         combobox4.setItems(list3);
         combobox4.getSelectionModel().select(ploskostpostr);
 
@@ -151,7 +155,13 @@ public class Controller {
             }
         }
 */
-        System.out.println(" " + sssd[0].pixels(2,35000000));
+
+    for(int i=0;i<bd.length;i++)
+        System.out.println(bd[i].names()+" "+bd[i].width()+" "+bd[i].haight()+" "+bd[i].length()+" "+bd[i].coordX()+" "+
+                bd[i].coordY()+" "+bd[i].coordZ()+" "+bd[i].ryadom()+" "+bd[i].angleX()+" "+bd[i].angleY()+" "+bd[i].angleZ());
+
+
+
         System.out.println("ok");
 //System.out.println("  dfs"+ sssd[188].pixels(0,199999)+" "+sssd[188].pixels(1,199999)+" "+sssd[188].pixels(2,199999));
 
@@ -168,6 +178,7 @@ public class Controller {
        // alert.setHeaderText("About");
        // alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
         alert.showAndWait();
+
     }
 /*
     @FXML

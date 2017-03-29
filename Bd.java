@@ -13,7 +13,8 @@ public class Bd {
     private int angleZ;
 
 
-    public Bd(String names,int width, int haight,int length,int coordX,int coordY,int coordZ,int ryadom, int angleX,int angleY,int angleZ){
+    public Bd(String names,int width, int haight,int length,int coordX,int coordY,int coordZ,
+              int ryadom, int angleX,int angleY,int angleZ){
         this.width=width;
         this.haight=haight;
         this.length=length;
@@ -35,12 +36,16 @@ public class Bd {
         return haight;
     }
     public int width(){return width;}
+    public int length(){return length;}
+
     public int coordX(){
         return coordX;
     }
     public int coordY(){return coordY;}
     public int coordZ(){return coordZ;}
+
     public int ryadom(){return  ryadom;}
+
     public int angleX(){return  angleX;}
     public int angleY(){return  angleY;}
     public int angleZ(){return  angleZ;}
