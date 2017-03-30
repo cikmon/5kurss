@@ -1,9 +1,21 @@
 package sample;
 
 public class Ploskosti {
+
+
+    private String names;
     private short coordX;
     private short coordY;
     private short coordZ;
+
+    private short haight;
+    private short width;
+    private short lenght;
+
+    private short angleX;
+    private short angleY;
+    private short angleZ;
+
 
     private short[][] pixels;
     private short[][] pixels2;
@@ -11,14 +23,6 @@ public class Ploskosti {
     private short[][] pixels4;
     private short[][] pixels5;
     private short[][] pixels6;
-
-    private String names;
-    private short angleX;
-    private short angleY;
-    private short angleZ;
-    private short haight;
-    private short width;
-    private short lenght;
 
     private short lengthpix;
     private short lengthpix2;
@@ -41,24 +45,27 @@ public class Ploskosti {
 
 
     public Ploskosti(
-            String names, short coordX, short coordY, short angleX,short angleY,short angleZ, short width, short haight,short lenght,
-            int max, int max2, int max3, int max4, int max5, int max6){
+            String names,short width, short haight,short lenght, short coordX, short coordY,short coordZ,
+            short angleX,short angleY,short angleZ){
         this.names=names;
         this.coordX=coordX;
         this.coordY=coordY;
-        this.coordY=coordY;
+        this.coordZ=coordZ;
         this.angleX=angleX;
         this.angleY=angleY;
         this.angleZ=angleZ;
         this.width=width;
         this.haight=haight;
         this.lenght=lenght;
-        pixels=new short[3][max];
-        pixels2=new short[3][max2];
-        pixels3=new short[3][max3];
-        pixels4=new short[3][max4];
-        pixels5=new short[3][max5];
-        pixels6=new short[3][max6];
+
+        pixels=new short[3][haight*width*3/9];
+        pixels2=new short[3][haight*lenght*3/9];
+        pixels3=new short[3][haight*lenght*3/9];
+        pixels4=new short[3][lenght*width*3/9];
+        pixels5=new short[3][lenght*width*3/9];
+        pixels6=new short[3][haight*width*3/9];
+
+
     }
 
     public short coordX(){return coordX;}
