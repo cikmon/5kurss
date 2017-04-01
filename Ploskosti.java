@@ -4,17 +4,17 @@ public class Ploskosti {
 
 
     private String names;
-    private short coordX;
-    private short coordY;
-    private short coordZ;
+    private double coordX;
+    private double coordY;
+    private double coordZ;
 
-    private short haight;
-    private short width;
-    private short lenght;
+    private int haight;
+    private int width;
+    private int lenght;
 
-    private short angleX;
-    private short angleY;
-    private short angleZ;
+    private int angleX;
+    private int angleY;
+    private int angleZ;
 
 
     private short[][] pixels;
@@ -32,28 +32,29 @@ public class Ploskosti {
     private short lengthpix6;
 
     //0x;1y;2z
-    private short tochka1[]=new short[3];
-    private short tochka2[]=new short[3];
-    private short tochka3[]=new short[3];
-    private short tochka4[]=new short[3];
-    private short tochka5[]=new short[3];
-    private short tochka6[]=new short[3];
-    private short tochka7[]=new short[3];
-    private short tochka8[]=new short[3];
+    private double tochka1[]=new double[3];
+    private double tochka2[]=new double[3];
+    private double tochka3[]=new double[3];
+    private double tochka4[]=new double[3];
+    private double tochka5[]=new double[3];
+    private double tochka6[]=new double[3];
+    private double tochka7[]=new double[3];
+    private double tochka8[]=new double[3];
 
 
 
 
     public Ploskosti(
-            String names,short width, short haight,short lenght, short coordX, short coordY,short coordZ,
-            short angleX,short angleY,short angleZ){
+            String names,int width, int haight,int lenght, double coordX, double coordY,double coordZ,
+            int angleX,int angleY,int angleZ){
         this.names=names;
         this.coordX=coordX;
         this.coordY=coordY;
         this.coordZ=coordZ;
         this.angleX=angleX;
         this.angleY=angleY;
-        this.angleZ=angleZ;
+        this.angleY=angleZ;
+
         this.width=width;
         this.haight=haight;
         this.lenght=lenght;
@@ -68,12 +69,12 @@ public class Ploskosti {
 
     }
 
-    public short coordX(){return coordX;}
-    public short coordY(){return coordY;}
-    public short coordZ(){return coordZ;}
-    public short angleX(){return angleX;}
-    public short anglY(){return angleY;}
-    public short angleZ(){return angleZ;}
+    public double coordX(){return coordX;}
+    public double coordY(){return coordY;}
+    public double coordZ(){return coordZ;}
+    public int angleX(){return angleX;}
+    public int angleY(){return angleY;}
+    public int angleZ(){return angleY;}
     public String names(){return names;}
 
     public short pixels(int i, int j){return pixels[i][j];}
@@ -83,11 +84,11 @@ public class Ploskosti {
     public short pixels5(int i, int j){return pixels5[i][j];}
     public short pixels6(int i, int j){return pixels6[i][j];}
 
-    public short haight(){
+    public int haight(){
         return haight;
     }
-    public short width(){return width;}
-    public short lenght(){return lenght;}
+    public int width(){return width;}
+    public int lenght(){return lenght;}
 
     public short lengthpix(){return lengthpix;}
     public short lengthpix2(){return lengthpix2;}
@@ -134,18 +135,18 @@ public class Ploskosti {
         this.lengthpix5=(short)(i+1);
     }
 
-    public void osntochkidobavl(short[] t1,short[] t6,short[] t2,short[] t3,short[] t4,short[] t5,short[] t7,short[] t8){
+    public void osntochkidobavl(double[] t1,double[] t6,double[] t2,double[] t3,double[] t4,double[] t5,double[] t7,double[] t8){
         this.tochka1=t1;this.tochka2=t2;this.tochka3=t3;this.tochka4=t4;
         this.tochka5=t5;this.tochka6=t6;this.tochka7=t7;this.tochka8=t8;
     }
-    public short poluchtochka1(int i){return tochka1[i];}
-    public short poluchtochka2(int i){return tochka2[i];}
-    public short poluchtochka3(int i){return tochka3[i];}
-    public short poluchtochka4(int i){return tochka4[i];}
-    public short poluchtochka5(int i){return tochka5[i];}
-    public short poluchtochka6(int i){return tochka6[i];}
-    public short poluchtochka7(int i){return tochka7[i];}
-    public short poluchtochka8(int i){return tochka8[i];}
+    public double poluchtochka1(int i){return tochka1[i];}
+    public double poluchtochka2(int i){return tochka2[i];}
+    public double poluchtochka3(int i){return tochka3[i];}
+    public double poluchtochka4(int i){return tochka4[i];}
+    public double poluchtochka5(int i){return tochka5[i];}
+    public double poluchtochka6(int i){return tochka6[i];}
+    public double poluchtochka7(int i){return tochka7[i];}
+    public double poluchtochka8(int i){return tochka8[i];}
 
 
 

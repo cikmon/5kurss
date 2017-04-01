@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.beans.value.ObservableValue;
@@ -108,7 +109,7 @@ public class Controller111 {
             try {
                 bd[i - 3] = new Bd("№" +(i-2)+" "+ openrazb[i][0], Integer.parseInt(openrazb[i][1]),
                         Integer.parseInt(openrazb[i][2]), Integer.parseInt(openrazb[i][3]), mmm[0],
-                        mmm[1], mmm[2], mmm[3], mmm[4], mmm[5], mmm[6]);
+                        mmm[1], mmm[2], mmm[3], mmm[4], mmm[5],1);
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Неверный формат строк!");
@@ -127,14 +128,14 @@ public class Controller111 {
                 addListener((ObservableValue<? extends Number> ov4, Number old_val4, Number new_val4) -> {
                     ploskostpostr = new_val4.intValue();
                 });
-      /*
+
         Ploskosti[] sssd = new Ploskosti[1000];
 
         sssd[0]=new Ploskosti("sads",(short)(Math.random()*333),(short)1,(short)1,(short)1,(short)1,(short)1,(short)1,(short)15000,
                 35000001,4000001,(short)35000001,(short)35000001,(short)35000001,(short)35000001);
             sssd[0].dobavlpixels((short)3,(short)3,(short)3000,35000000);
-*/
-/*
+
+
         for(int j=0;j<100;j++) {
             sssd[j]=new Ploskosti("sads",(short)(Math.random()*333),(short)1,(short)1,(short)1,(short)15000,
                 35000001,35000001,35000001,35000001,35000001,35000001);
@@ -147,11 +148,11 @@ public class Controller111 {
                 sssd[j].dobavlpixels6((short)1000, (short)1000,(short) 1000, i);
             }
         }
-*/
+
 
     for(int i=0;i<bd.length;i++)
         System.out.println(bd[i].names()+" "+bd[i].width()+" "+bd[i].haight()+" "+bd[i].length()+" "+bd[i].coordX()+" "+
-                bd[i].coordY()+" "+bd[i].coordZ()+" "+bd[i].ryadom()+" "+bd[i].angleX()+" "+bd[i].angleY()+" "+bd[i].angleZ());
+                bd[i].coordY()+" "+bd[i].coordZ()+" "+bd[i].ryadom()+" "+bd[i].angleX()+" "+bd[i].angleY());
 
 
 
@@ -173,7 +174,7 @@ public class Controller111 {
         alert.showAndWait();
 
     }
-/*
+
     @FXML
     private void handleSave(){
 
@@ -342,7 +343,7 @@ public class Controller111 {
         combobox2.getSelectionModel().select(0);
 
     }
-*/
+
     @FXML
     private void handleLocaterazmesh() throws IOException {
       //  metodrazmesh(); metodproverka();
@@ -353,7 +354,7 @@ public class Controller111 {
         alert.showAndWait();
 
         System.out.println("ok");}
-/*
+
     @FXML
     private void handleLocate() throws IOException {
        // if(ploskostpostr==0){
@@ -983,8 +984,8 @@ public class Controller111 {
 
 
     }
-    */
-    /*
+
+
     private void metodrazmeshryadom() {
 
         for (int i = 0; i < n; i++) {//переборка всего массива
@@ -1176,8 +1177,8 @@ public class Controller111 {
         }
 
     }
-    */
-/*
+
+
     private void metodrazmeshostaln() {
         //переборка всего массива
         for (int i = 0; i < n; i++) {
@@ -1281,7 +1282,7 @@ public class Controller111 {
 
     }
 
-*/
+
 
     private void metodrazmeshangle() {
         for(int i=0;i<bd.length;i++){
@@ -1297,3 +1298,4 @@ public class Controller111 {
 
 
 }
+*/

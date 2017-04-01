@@ -12,7 +12,6 @@ public class Bd {
     private int angleY;
     private int angleZ;
 
-
     public Bd(String names,int width, int haight,int length,int coordX,int coordY,int coordZ,
               int ryadom, int angleX,int angleY,int angleZ){
         this.width=width;
@@ -49,5 +48,6 @@ public class Bd {
     public int angleX(){return  angleX;}
     public int angleY(){return  angleY;}
     public int angleZ(){return  angleZ;}
+
 
 }
