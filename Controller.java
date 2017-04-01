@@ -265,42 +265,39 @@ public class Controller {
                     t8[2] = t6[2];
 
                 }else if(osnovnoi[i].angleZ()!=0) {
-                    double ddd = Math.sqrt(Math.pow(osnovnoi[i].lenght(), 2) + Math.pow(osnovnoi[i].width(), 2));
-                    double ugol = Math.toDegrees(Math.asin(osnovnoi[i].width() / ddd)) - osnovnoi[i].angleY();
-
                     t1[0] = osnovnoi[i].coordX();
                     t1[1] = osnovnoi[i].coordY();
                     t1[2] = osnovnoi[i].coordZ();
-                  //////
+                    double ddd = Math.sqrt(Math.pow(osnovnoi[i].lenght(), 2) + Math.pow(osnovnoi[i].width(), 2));
+                    double ugol = Math.toDegrees(Math.asin(osnovnoi[i].width() / ddd)) - osnovnoi[i].angleZ();
                     t2[0] = t1[0];
-                    t2[1] = t1[1] + osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleY()));
-                    t2[2] = t1[2]- osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleY()));
-                    t3[0] = t1[0]+osnovnoi[i].width();
+                    t2[1] = t1[1] + osnovnoi[i].haight();
+                    t2[2] = t1[2];
+                    t3[0] = t1[0] + osnovnoi[i].width() * Math.cos(Math.toRadians(osnovnoi[i].angleZ()));
                     t3[1] = t1[1];
-                    t3[2] = t1[2];
+                    t3[2] = t1[2]+ osnovnoi[i].width() * Math.cos(Math.toRadians(osnovnoi[i].angleZ()));
                     t4[0] = t3[0];
                     t4[1] = t2[1];
-                    t4[2] = t2[2];
-                    t5[0] = t1[0];
-                    t5[1] = t1[1] + osnovnoi[i].lenght() * Math.sin(Math.toRadians(osnovnoi[i].angleY()));
-                    t5[2] = t1[2] + osnovnoi[i].lenght() * Math.cos(Math.toRadians(osnovnoi[i].angleY()));
+                    t4[2] = t3[2];
+                    t5[0] = t1[0]- osnovnoi[i].lenght() * Math.cos(Math.toRadians(90-osnovnoi[i].angleZ()));;
+                    t5[1] = t1[1];
+                    t5[2] = t1[2] + osnovnoi[i].lenght() * Math.cos(Math.toRadians(osnovnoi[i].angleZ()));
+                    t6[0] = t5[0];
+                    t6[1] = t2[1];
+                    t6[2] = t5[2];
+
                     if (ugol > 0) {
-                        t6[0] = t1[0];
-                        t6[1] = t1[1] + osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleY()));
-                        t6[2] = t1[2]+ osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleY()));
+                        t7[0] = t1[0]+ osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleZ()));
+                        t7[1] = t1[1];
+                        t7[2] = t1[2]+ osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleZ()));
                     } else {
-                        t6[0] = t1[0];
-                        t6[1] = t1[1] + osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleY()));
-                        t6[2] = t1[2]- osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleY()));
+                        t7[0] = t1[0]- osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleZ()));;
+                        t7[1] = t1[1];
+                        t7[2] = t1[2]+ osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleZ()));
                     }
-                    t7[0] = t3[0];
-                    t7[1] = t3[1] + osnovnoi[i].lenght() * Math.sin(Math.toRadians(osnovnoi[i].angleY()));
-                    t7[2] = t1[2] + osnovnoi[i].lenght() * Math.cos(Math.toRadians(osnovnoi[i].angleY()));
-                    t8[0] = t3[0];
-                    t8[1] = t6[1];
-                    t8[2] = t6[2];
-
-
+                    t8[0] = t7[0];
+                    t8[1] = t2[1];
+                    t8[2] = t7[2];
 
                 }
             }
