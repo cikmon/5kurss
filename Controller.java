@@ -174,25 +174,39 @@ public class Controller {
         //  metodrazmesh(); metodproverka();
         //  metodrazmeshryadom();
         //  metodrazmeshostaln();
-        metodrazmeshangle();
+        metodrazmeshangletochki();
+        metodrazmeshanglepixels();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText("Расчеты завершились.");
         alert.showAndWait();
+
+        System.out.println("t1 X="+osnovnoi[0].poluchtochka1(0)+" Y"+osnovnoi[0].poluchtochka1(1)+" Z"+osnovnoi[0].poluchtochka1(2));
+        System.out.println("t2 X="+osnovnoi[0].poluchtochka2(0)+" Y"+osnovnoi[0].poluchtochka2(1)+" Z"+osnovnoi[0].poluchtochka2(2));
+        System.out.println("t3 X="+osnovnoi[0].poluchtochka3(0)+" Y"+osnovnoi[0].poluchtochka3(1)+" Z"+osnovnoi[0].poluchtochka3(2));
+        System.out.println("t4 X="+osnovnoi[0].poluchtochka4(0)+" Y"+osnovnoi[0].poluchtochka4(1)+" Z"+osnovnoi[0].poluchtochka4(2));
+        System.out.println("t5 X="+osnovnoi[0].poluchtochka5(0)+" Y"+osnovnoi[0].poluchtochka5(1)+" Z"+osnovnoi[0].poluchtochka5(2));
+        System.out.println("t 6X="+osnovnoi[0].poluchtochka6(0)+" Y"+osnovnoi[0].poluchtochka6(1)+" Z"+osnovnoi[0].poluchtochka6(2));
+        System.out.println("t7 X="+osnovnoi[0].poluchtochka7(0)+" Y"+osnovnoi[0].poluchtochka7(1)+" Z"+osnovnoi[0].poluchtochka7(2));
+        System.out.println("t8 X="+osnovnoi[0].poluchtochka8(0)+" Y"+osnovnoi[0].poluchtochka8(1)+" Z"+osnovnoi[0].poluchtochka8(2));
+
+        osnovnoi[0].dobavlpixels((short)11,(short)1,(short)1);
+        for(int i=0;i<osnovnoi[0].lengthpix();i++) System.out.print(osnovnoi[0].pixels(0,i)+" "+osnovnoi[0].pixels(1,i)+";");
 
         System.out.println("ok");
     }
 
 
 
-    private void metodrazmeshangle() {
+    public void metodrazmeshangletochki() {
         for(int i=0;i<bd.length;i++) {
             if (bd[i].angleX() != 0 || bd[i].angleY() != 0|| bd[i].angleZ() != 0) {
                 double t1[] = new double[3], t2[] = new double[3], t3[] = new double[3], t4[] = new double[3],
                         t5[] = new double[3], t6[] = new double[3], t7[] = new double[3], t8[] = new double[3];
                 kolvosnaclonom++;
+                osnovnoi[i] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(), bd[i].coordX(), bd[i].coordY(), bd[i].coordZ(),
+                        bd[i].angleX(), bd[i].angleY(),bd[i].angleZ());
                 if (bd[i].angleX() != 0) {
-                    osnovnoi[i] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(), bd[i].coordX(), bd[i].coordY(), bd[i].coordZ(),
-                            bd[i].angleX(), bd[i].angleY(),bd[i].angleZ());
+
 
                     double ddd = Math.sqrt(Math.pow(osnovnoi[i].width(), 2) + Math.pow(osnovnoi[i].haight(), 2));
                     double ugol = Math.toDegrees(Math.asin(osnovnoi[i].width() / ddd)) - osnovnoi[i].angleX();
@@ -291,7 +305,7 @@ public class Controller {
                         t7[1] = t1[1];
                         t7[2] = t1[2]+ osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleZ()));
                     } else {
-                        t7[0] = t1[0]- osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleZ()));;
+                        t7[0] = t1[0]- osnovnoi[i].haight() * Math.cos(Math.toRadians(90 - osnovnoi[i].angleZ()));
                         t7[1] = t1[1];
                         t7[2] = t1[2]+ osnovnoi[i].haight() * Math.sin(Math.toRadians(90 - osnovnoi[i].angleZ()));
                     }
@@ -300,8 +314,62 @@ public class Controller {
                     t8[2] = t7[2];
 
                 }
+                osnovnoi[i].osntochkidobavl(t1,t2,t3,t4,t5,t6,t7,t8);
             }
         }
+
+    }
+    private void metodrazmeshanglepixels() {
+        for(int i=0;i<kolvosnaclonom;i++) {
+            if (osnovnoi[i].angleX()!=0) {
+///первая плоскость
+                if (Math.pow((osnovnoi[i].poluchtochka3(0)-osnovnoi[i].poluchtochka1(0)),2)>=
+                        Math.pow((osnovnoi[i].poluchtochka2(0)-osnovnoi[i].poluchtochka1(0)),2)){
+
+                    int ttn1[]=new int [3]; int ttk3[]=new int[3];int ttn2[]=new int [3]; int ttk4[]=new int[3];
+                    ttn1[0]=(int)Math.round(osnovnoi[i].poluchtochka1(0));
+                    ttn1[1]=(int)Math.round(osnovnoi[i].poluchtochka1(1));
+                    ttn1[2]=(int)Math.round(osnovnoi[i].poluchtochka1(2));
+                    ttk3[0]=(int)Math.round(osnovnoi[i].poluchtochka3(0));
+                    ttk3[1]=(int)Math.round(osnovnoi[i].poluchtochka3(1));
+                    ttk3[2]=(int)Math.round(osnovnoi[i].poluchtochka3(2));
+
+                    ttn2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0));
+                    ttn2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1));
+                    ttn2[2]=(int)Math.round(osnovnoi[i].poluchtochka2(2));
+                    ttk4[0]=(int)Math.round(osnovnoi[i].poluchtochka4(0));
+                    ttk4[1]=(int)Math.round(osnovnoi[i].poluchtochka4(1));
+                    ttk4[2]=(int)Math.round(osnovnoi[i].poluchtochka4(2));
+                    System.out.println("!");
+
+
+//по х
+                    for(int j=ttn1[0];j<ttk3[0];j++){
+
+                        int tt1[]=new int[3]; int tt2[]=new int[3];
+                        tt1[0]=j; tt1[2]=ttn1[2];
+                        tt1[1]=(tt1[0]-ttn1[0])/(ttk3[0]-ttn1[0])*(ttk3[1]-ttn1[1])+ttn1[1];
+
+                        tt2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0))-(int)Math.round(osnovnoi[i].poluchtochka1(0))+tt1[0];
+                        tt2[2]=ttn1[2];
+                        tt2[1]=(tt2[0]-ttn2[0])/(ttk4[0]-ttn2[0])*(ttk4[1]-ttn2[1])+ttn2[1];
+                        //по у
+                        for(int k=tt1[1];k<tt2[1];k++) {
+                            short x,y,z=(short)tt1[2];
+                            y=(short)k;
+                            x=(short)((k-tt1[1])/(tt2[1]-tt1[1])*(tt2[0]-tt1[0])+tt1[0]);
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+
+                    }
+
+
+                }
+
+            }
+        }
+
 
     }
 

@@ -60,6 +60,6 @@
       <TextField fx:id="coordYform" layoutX="260.0" layoutY="87.0" prefHeight="25.0" prefWidth="100.0" promptText="Y" />
       <ComboBox fx:id="combobox4" layoutX="150.0" layoutY="242.0" prefHeight="25.0" prefWidth="110.0" />
       <TextField fx:id="angleform" layoutX="226.0" layoutY="37.0" prefHeight="25.0" prefWidth="84.0" promptText="Угол наклона" />
-      <Button layoutX="261.0" layoutY="206.0" mnemonicParsing="false" text="Сформировать" />
+      <Button layoutX="261.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleLocaterazmesh" text="Сформировать" />
    </children>
 </Pane>
