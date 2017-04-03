@@ -323,25 +323,23 @@ public class Controller {
         for(int i=0;i<kolvosnaclonom;i++) {
             if (osnovnoi[i].angleX()!=0) {
 ///первая плоскость
+                int ttn1[]=new int [3]; int ttk3[]=new int[3];int ttn2[]=new int [3]; int ttk4[]=new int[3];
+                ttn1[0]=(int)Math.round(osnovnoi[i].poluchtochka1(0));
+                ttn1[1]=(int)Math.round(osnovnoi[i].poluchtochka1(1));
+                ttn1[2]=(int)Math.round(osnovnoi[i].poluchtochka1(2));
+                ttk3[0]=(int)Math.round(osnovnoi[i].poluchtochka3(0));
+                ttk3[1]=(int)Math.round(osnovnoi[i].poluchtochka3(1));
+                ttk3[2]=(int)Math.round(osnovnoi[i].poluchtochka3(2));
+
+                ttn2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0));
+                ttn2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1));
+                ttn2[2]=(int)Math.round(osnovnoi[i].poluchtochka2(2));
+                ttk4[0]=(int)Math.round(osnovnoi[i].poluchtochka4(0));
+                ttk4[1]=(int)Math.round(osnovnoi[i].poluchtochka4(1));
+                ttk4[2]=(int)Math.round(osnovnoi[i].poluchtochka4(2));
+
                 if (Math.pow((osnovnoi[i].poluchtochka3(0)-osnovnoi[i].poluchtochka1(0)),2)>=
                         Math.pow((osnovnoi[i].poluchtochka2(0)-osnovnoi[i].poluchtochka1(0)),2)){
-
-                    int ttn1[]=new int [3]; int ttk3[]=new int[3];int ttn2[]=new int [3]; int ttk4[]=new int[3];
-                    ttn1[0]=(int)Math.round(osnovnoi[i].poluchtochka1(0));
-                    ttn1[1]=(int)Math.round(osnovnoi[i].poluchtochka1(1));
-                    ttn1[2]=(int)Math.round(osnovnoi[i].poluchtochka1(2));
-                    ttk3[0]=(int)Math.round(osnovnoi[i].poluchtochka3(0));
-                    ttk3[1]=(int)Math.round(osnovnoi[i].poluchtochka3(1));
-                    ttk3[2]=(int)Math.round(osnovnoi[i].poluchtochka3(2));
-
-                    ttn2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0));
-                    ttn2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1));
-                    ttn2[2]=(int)Math.round(osnovnoi[i].poluchtochka2(2));
-                    ttk4[0]=(int)Math.round(osnovnoi[i].poluchtochka4(0));
-                    ttk4[1]=(int)Math.round(osnovnoi[i].poluchtochka4(1));
-                    ttk4[2]=(int)Math.round(osnovnoi[i].poluchtochka4(2));
-                    System.out.println("!");
-
 
 //по х
                     for(int j=ttn1[0];j<ttk3[0];j++){
@@ -364,10 +362,67 @@ public class Controller {
 
                     }
 
+                }else{
+                    for(int j=ttn1[1];j<ttk3[1];j++){
+
+                        int tt1[]=new int[3]; int tt2[]=new int[3];
+                        tt1[1]=j; tt1[2]=ttn1[2];
+                        tt1[0]=(tt1[1]-ttn1[1])/(ttk3[1]-ttn1[1])*(ttk3[0]-ttn1[0])+ttn1[0];
+
+                        tt2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1))-(int)Math.round(osnovnoi[i].poluchtochka1(1))+tt1[1];
+                        tt2[2]=ttn1[2];
+                        tt2[0]=(tt2[1]-ttn2[1])/(ttk4[1]-ttn2[1])*(ttk4[0]-ttn2[0])+ttn2[0];
+                        //по x
+                        for(int k=tt1[0];k<tt2[0];k++) {
+                            short x,y,z=(short)tt1[2];
+                            x=(short)k;
+                            y=(short)((k-tt1[0])/(tt2[0]-tt1[0])*(tt2[1]-tt1[1])+tt1[1]);
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+
+                    }
+
+
+
 
                 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                for(int i1=0;i1<osnovnoi[i].lengthpix();i++){
+                   osnovnoi[i].dobavlpixels6(osnovnoi[i].pixels(0,i1),osnovnoi[i].pixels(1,i1),
+                           (short)(osnovnoi[i].pixels(2,i1)+osnovnoi[i].lenght()));
+                }
+
+
+
+
+            }else if(osnovnoi[i].angleY()!=0){
+
             }
+
+
         }
 
 
