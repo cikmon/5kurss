@@ -321,36 +321,48 @@ public class Controller {
     }
     private void metodrazmeshanglepixels() {
         for(int i=0;i<kolvosnaclonom;i++) {
+            int t1[]=new int [3]; int t3[]=new int[3];int t2[]=new int [3]; int t4[]=new int[3];int t7[]=new int [3];int t5[]=new int [3];
+            int t6[]=new int [3];int t8[]=new int [3];
+            t1[0]=(int)Math.round(osnovnoi[i].poluchtochka1(0));
+            t1[1]=(int)Math.round(osnovnoi[i].poluchtochka1(1));
+            t1[2]=(int)Math.round(osnovnoi[i].poluchtochka1(2));
+            t2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0));
+            t2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1));
+            t2[2]=(int)Math.round(osnovnoi[i].poluchtochka2(2));
+            t3[0]=(int)Math.round(osnovnoi[i].poluchtochka3(0));
+            t3[1]=(int)Math.round(osnovnoi[i].poluchtochka3(1));
+            t3[2]=(int)Math.round(osnovnoi[i].poluchtochka3(2));
+            t4[0]=(int)Math.round(osnovnoi[i].poluchtochka4(0));
+            t4[1]=(int)Math.round(osnovnoi[i].poluchtochka4(1));
+            t4[2]=(int)Math.round(osnovnoi[i].poluchtochka4(2));
+            t5[0]=(int)Math.round(osnovnoi[i].poluchtochka5(0));
+            t5[1]=(int)Math.round(osnovnoi[i].poluchtochka5(1));
+            t5[2]=(int)Math.round(osnovnoi[i].poluchtochka5(2));
+            t7[0]=(int)Math.round(osnovnoi[i].poluchtochka7(0));
+            t7[1]=(int)Math.round(osnovnoi[i].poluchtochka7(1));
+            t7[2]=(int)Math.round(osnovnoi[i].poluchtochka7(2));
+            t6[0]=(int)Math.round(osnovnoi[i].poluchtochka6(0));
+            t6[1]=(int)Math.round(osnovnoi[i].poluchtochka6(1));
+            t6[2]=(int)Math.round(osnovnoi[i].poluchtochka6(2));
+            t8[0]=(int)Math.round(osnovnoi[i].poluchtochka8(0));
+            t8[1]=(int)Math.round(osnovnoi[i].poluchtochka8(1));
+            t8[2]=(int)Math.round(osnovnoi[i].poluchtochka8(2));
             if (osnovnoi[i].angleX()!=0) {
 ///первая плоскость
-                int ttn1[]=new int [3]; int ttk3[]=new int[3];int ttn2[]=new int [3]; int ttk4[]=new int[3];
-                ttn1[0]=(int)Math.round(osnovnoi[i].poluchtochka1(0));
-                ttn1[1]=(int)Math.round(osnovnoi[i].poluchtochka1(1));
-                ttn1[2]=(int)Math.round(osnovnoi[i].poluchtochka1(2));
-                ttk3[0]=(int)Math.round(osnovnoi[i].poluchtochka3(0));
-                ttk3[1]=(int)Math.round(osnovnoi[i].poluchtochka3(1));
-                ttk3[2]=(int)Math.round(osnovnoi[i].poluchtochka3(2));
-
-                ttn2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0));
-                ttn2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1));
-                ttn2[2]=(int)Math.round(osnovnoi[i].poluchtochka2(2));
-                ttk4[0]=(int)Math.round(osnovnoi[i].poluchtochka4(0));
-                ttk4[1]=(int)Math.round(osnovnoi[i].poluchtochka4(1));
-                ttk4[2]=(int)Math.round(osnovnoi[i].poluchtochka4(2));
 
                 if (Math.pow((osnovnoi[i].poluchtochka3(0)-osnovnoi[i].poluchtochka1(0)),2)>=
                         Math.pow((osnovnoi[i].poluchtochka2(0)-osnovnoi[i].poluchtochka1(0)),2)){
 
 //по х
-                    for(int j=ttn1[0];j<ttk3[0];j++){
+                    for(int j=t1[0];j<t3[0];j++){
 
                         int tt1[]=new int[3]; int tt2[]=new int[3];
-                        tt1[0]=j; tt1[2]=ttn1[2];
-                        tt1[1]=(tt1[0]-ttn1[0])/(ttk3[0]-ttn1[0])*(ttk3[1]-ttn1[1])+ttn1[1];
+                        tt1[0]=j; tt1[2]=t1[2];
+                        tt1[1]=(tt1[0]-t1[0])/(t3[0]-t1[0])*(t3[1]-t1[1])+t1[1];
 
                         tt2[0]=(int)Math.round(osnovnoi[i].poluchtochka2(0))-(int)Math.round(osnovnoi[i].poluchtochka1(0))+tt1[0];
-                        tt2[2]=ttn1[2];
-                        tt2[1]=(tt2[0]-ttn2[0])/(ttk4[0]-ttn2[0])*(ttk4[1]-ttn2[1])+ttn2[1];
+                        tt2[2]=t1[2];
+                        tt2[1]=(tt2[0]-t2[0])/(t4[0]-t2[0])*(t4[1]-t2[1])+t2[1];
                         //по у
                         for(int k=tt1[1];k<tt2[1];k++) {
                             short x,y,z=(short)tt1[2];
@@ -363,15 +375,15 @@ public class Controller {
                     }
 
                 }else{
-                    for(int j=ttn1[1];j<ttk3[1];j++){
+                    for(int j=t1[1];j<t3[1];j++){
 
                         int tt1[]=new int[3]; int tt2[]=new int[3];
-                        tt1[1]=j; tt1[2]=ttn1[2];
-                        tt1[0]=(tt1[1]-ttn1[1])/(ttk3[1]-ttn1[1])*(ttk3[0]-ttn1[0])+ttn1[0];
+                        tt1[1]=j; tt1[2]=t1[2];
+                        tt1[0]=(tt1[1]-t1[1])/(t3[1]-t1[1])*(t3[0]-t1[0])+t1[0];
 
                         tt2[1]=(int)Math.round(osnovnoi[i].poluchtochka2(1))-(int)Math.round(osnovnoi[i].poluchtochka1(1))+tt1[1];
-                        tt2[2]=ttn1[2];
-                        tt2[0]=(tt2[1]-ttn2[1])/(ttk4[1]-ttn2[1])*(ttk4[0]-ttn2[0])+ttn2[0];
+                        tt2[2]=t1[2];
+                        tt2[0]=(tt2[1]-t2[1])/(t4[1]-t2[1])*(t4[0]-t2[0])+t2[0];
                         //по x
                         for(int k=tt1[0];k<tt2[0];k++) {
                             short x,y,z=(short)tt1[2];
@@ -385,40 +397,168 @@ public class Controller {
 
 
 
-
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                //sixth plane
                 for(int i1=0;i1<osnovnoi[i].lengthpix();i++){
                    osnovnoi[i].dobavlpixels6(osnovnoi[i].pixels(0,i1),osnovnoi[i].pixels(1,i1),
                            (short)(osnovnoi[i].pixels(2,i1)+osnovnoi[i].lenght()));
                 }
 
+                //третья плоскость
 
+                for(int j=t3[2];j<t7[2];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=t3[0];tn[1]=t3[1];tn[2]=j;
+                    tk[0]=t4[0];tk[1]=t4[1];tk[2]=j;
+                    if (Math.pow((t4[0])-t3[0],2)> Math.pow((t4[1]-t3[1]),2)) {
+                        for(int k=t4[0];k<t3[0];k++){
+                            short x,y,z;
+                            x=(short)k;y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)j;
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t3[1];k<t4[1];k++){
+                            short x,y,z;
+                            x=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            y=(short)k;
+                            z=(short)j;
 
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
+            // вторая плоскость
+                for(int j=t3[2];j<t7[2];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=t1[0];tn[1]=t1[1];tn[2]=j;
+                    tk[0]=t2[0];tk[1]=t2[1];tk[2]=j;
+                    if (Math.pow((t4[0])-t3[0],2)> Math.pow((t4[1]-t3[1]),2)) {
+                        for(int k=t2[0];k<t1[0];k++){
+                            short x,y,z;
+                            x=(short)k;y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)j;
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t1[1];k<t2[1];k++){
+                            short x,y,z;
+                            x=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            y=(short)k;
+                            z=(short)j;
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
+                //fourth plane
+                for(int j=t3[2];j<t7[2];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=t2[0];tn[1]=t2[1];tn[2]=j;
+                    tk[0]=t4[0];tk[1]=t4[1];tk[2]=j;
+                    if (Math.pow((t4[0])-t2[0],2)>= Math.pow((t4[1]-t2[1]),2)) {
+                        for(int k=t2[0];k<t4[0];k++){
+                            short x,y,z;
+                            x=(short)k;y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)j;
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t1[1];k<t2[1];k++){
+                            short x,y,z;
+                            x=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            y=(short)k;
+                            z=(short)j;
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
+                //fifth plane
+                for(int j=t3[2];j<t7[2];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=t1[0];tn[1]=t1[1];tn[2]=j;
+                    tk[0]=t3[0];tk[1]=t3[1];tk[2]=j;
+                    if (Math.pow((t4[0])-t2[0],2)> Math.pow((t4[1]-t2[1]),2)) {
+                        for(int k=t1[0];k<t3[0];k++){
+                            short x,y,z;
+                            x=(short)k;y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)j;
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t1[1];k<t3[1];k++){
+                            short x,y,z;
+                            x=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            y=(short)k;
+                            z=(short)j;
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
 
             }else if(osnovnoi[i].angleY()!=0){
+                // first plane
+                for(int j=t1[0];j<t3[0];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=j;tn[1]=t1[1];tn[2]=t1[2];
+                    tk[0]=j;tk[1]=t2[1];tk[2]=t2[2];
+                    if (Math.pow((t1[2])-t2[2],2)< Math.pow((t1[1]-t2[1]),2)) {
+                        for(int k=t1[1];k<t2[1];k++){
+                            short x,y,z;
+                            x=(short)j;
+                            y=(short)k;
+                            z=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t2[2];k<t1[2];k++){
+                            short x,y,z;
+                            x=(short)j;
+                            y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)k;
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
+                // sixth plane
+                for(int j=t1[0];j<t3[0];j++){
+                    int[] tn=new int[3];int[] tk=new int[3];
+                    tn[0]=j;tn[1]=t5[1];tn[2]=t5[2];
+                    tk[0]=j;tk[1]=t6[1];tk[2]=t6[2];
+                    if (Math.pow((t6[2])-t5[2],2)< Math.pow((t6[1]-t5[1]),2)) {
+                        for(int k=t5[1];k<t6[1];k++){
+                            short x,y,z;
+                            x=(short)j;
+                            y=(short)k;
+                            z=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[0]-tn[0])+tn[0]);
+                            osnovnoi[i].dobavlpixels(x,y,z);
+                        }
+                    }else{
+                        for(int k=t6[2];k<t5[2];k++){
+                            short x,y,z;
+                            x=(short)j;
+                            y=(short)((k-tn[0])/(tk[0]-tn[0])*(tk[1]-tn[1])+tn[1]);
+                            z=(short)k;
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
+
+
+
+
+
 
             }
 
