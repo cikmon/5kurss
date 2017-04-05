@@ -503,7 +503,9 @@ public class Controller {
                     }
                 }
 
+
             }else if(osnovnoi[i].angleY()!=0){
+
                 // first plane
                 for(int j=t1[0];j<t3[0];j++){
                     int[] tn=new int[3];int[] tk=new int[3];
@@ -529,6 +531,7 @@ public class Controller {
                         }
                     }
                 }
+
                 // sixth plane
                 for(int j=t1[0];j<t3[0];j++){
                     int[] tn=new int[3];int[] tk=new int[3];
@@ -554,7 +557,46 @@ public class Controller {
                         }
                     }
                 }
+                ////// third plane
+                if (Math.pow((t1[1])-t2[1],2)>= Math.pow((t1[2]-t2[2]),2)) {
+                for(int j=t1[1];j<t2[1];j++) {
+                    int[] tn = new int[3];
+                    int[] tk = new int[3];
+                    tn[0] = t1[0];
+                    tn[1] = j;
+                    tn[2] = (j-t1[1])/(t2[1]-t1[1])*(t2[2]-t1[2])+t1[2];
+                    tk[0] = t1[0];
+                    tk[1] = (t5[1]-t1[1]+j);
+                    tk[2] = ((t5[1]-t1[1]+j)-t5[1])/(t6[1]-t5[1])*(t6[2]-t5[2])+t5[2];
 
+                    for (int k = t1[2]; k < t5[2]; k++) {
+                        short x, y, z;
+                        x = (short) t1[0];
+                        y = (short) ((k - tn[2]) / (tk[2] - tn[2]) * (tk[1] - tn[1]) + tn[1]);
+                        z = (short) k;
+                        osnovnoi[i].dobavlpixels(x, y, z);
+                    }
+                }
+                    }else{
+                        for(int j=t1[2];j<t5[2];j++){
+                            int[] tn=new int[3];int[] tk=new int[3];
+                            tn[0]=t1[0];
+                            tn[1]=(j-t1[2])/(t5[2]-t1[2])*(t5[1]-t1[1])+t1[1];
+                            tn[2]=j;
+                            tk[0]=t1[0];
+                            tk[1]=(j-t1[2])/(t5[2]-t1[2])*(t5[1]-t1[1])+t1[1];
+                            tk[2]=t2[2]-t1[2]+j;
+                        for(int k=t6[1];k<t5[1];k++){
+                            short x,y,z;
+                            x=(short)t1[0];
+                            y=(short)k;
+                            z=(short)((k-tn[1])/(tk[1]-tn[1])*(tk[2]-tn[2])+tn[2]);
+
+                            osnovnoi[i].dobavlpixels(x,y,z);
+
+                        }
+                    }
+                }
 
 
 
