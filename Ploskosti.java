@@ -25,11 +25,11 @@ public class Ploskosti {
     private short[][] pixels6;
 
     private int lengthpix=0;
-    private short lengthpix2=0;
-    private short lengthpix3=0;
-    private short lengthpix4=0;
-    private short lengthpix5=0;
-    private short lengthpix6=0;
+    private int lengthpix2=0;
+    private int lengthpix3=0;
+    private int lengthpix4=0;
+    private int lengthpix5=0;
+    private int lengthpix6=0;
 
     //0x;1y;2z
     private double tochka1[]=new double[3];
@@ -59,7 +59,7 @@ public class Ploskosti {
         this.haight=haight;
         this.lenght=lenght;
 
-        pixels=new short[3][haight*width];
+        pixels=new short[3][haight*width*2];
         pixels2=new short[3][haight*lenght];
         pixels3=new short[3][haight*lenght];
         pixels4=new short[3][lenght*width];
@@ -91,48 +91,48 @@ public class Ploskosti {
     public int lenght(){return lenght;}
 
     public int lengthpix(){return lengthpix;}
-    public short lengthpix2(){return lengthpix2;}
-    public short lengthpix3(){return lengthpix3;}
-    public short lengthpix4(){return lengthpix4;}
-    public short lengthpix5(){return lengthpix5;}
-    public short lengthpix6(){return lengthpix6;}
+    public int lengthpix2(){return lengthpix2;}
+    public int lengthpix3(){return lengthpix3;}
+    public int lengthpix4(){return lengthpix4;}
+    public int lengthpix5(){return lengthpix5;}
+    public int lengthpix6(){return lengthpix6;}
 
 
     public void dobavlpixels(short pixelX,short pixelY,short pixelZ){
         this.pixels[0][lengthpix]=pixelX;
         this.pixels[1][lengthpix]=pixelY;
         this.pixels[2][lengthpix]=pixelZ;
-        this.lengthpix=lengthpix+1;
+        this.lengthpix++;
     }
     public void dobavlpixels6(short pixelX,short pixelY,short pixelZ){
         this.pixels6[0][lengthpix6]=pixelX;
         this.pixels6[1][lengthpix6]=pixelY;
         this.pixels6[2][lengthpix6]=pixelZ;
-        this.lengthpix6=(short)(lengthpix6+1);
+        this.lengthpix6++;
     }
     public void dobavlpixels2(short pixelX,short pixelY,short pixelZ){
         this.pixels2[0][lengthpix2]=pixelX;
         this.pixels2[1][lengthpix2]=pixelY;
         this.pixels2[2][lengthpix2]=pixelZ;
-        this.lengthpix2=(short)(lengthpix2+1);
+        this.lengthpix2++;
     }
     public void dobavlpixels3(short pixelX,short pixelY,short pixelZ){
         this.pixels3[0][lengthpix3]=pixelX;
         this.pixels3[1][lengthpix3]=pixelY;
         this.pixels3[2][lengthpix3]=pixelZ;
-        this.lengthpix3=(short)(lengthpix3+1);
+        this.lengthpix3++;
     }
     public void dobavlpixels4(short pixelX,short pixelY,short pixelZ){
         this.pixels4[0][lengthpix4]=pixelX;
         this.pixels4[1][lengthpix4]=pixelY;
         this.pixels4[2][lengthpix4]=pixelZ;
-        this.lengthpix4=(short)(lengthpix4+1);
+        this.lengthpix4++;
     }
     public void dobavlpixels5(short pixelX,short pixelY,short pixelZ){
         this.pixels5[0][lengthpix5]=pixelX;
         this.pixels5[1][lengthpix5]=pixelY;
         this.pixels5[2][lengthpix5]=pixelZ;
-        this.lengthpix5=(short)(lengthpix5+1);
+        this.lengthpix5++;
     }
 
     public void osntochkidobavl(double[] t1,double[] t2,double[] t3,double[] t4,double[] t5,double[] t6,double[] t7,double[] t8){
