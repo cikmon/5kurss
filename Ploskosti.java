@@ -59,12 +59,12 @@ public class Ploskosti {
         this.haight=haight;
         this.lenght=lenght;
 
-        pixels=new short[3][haight*width*2];
-        pixels2=new short[3][haight*lenght];
-        pixels3=new short[3][haight*lenght];
+        pixels=new short[3][haight*width];
+        pixels2=new short[3][haight*lenght*2];
+        pixels3=new short[3][haight*lenght*2];
         pixels4=new short[3][lenght*width];
         pixels5=new short[3][lenght*width];
-        pixels6=new short[3][haight*width];
+        pixels6=new short[3][haight*width*2];
 
 
     }
