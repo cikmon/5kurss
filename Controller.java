@@ -190,8 +190,9 @@ public class Controller {
         System.out.println("t8 X="+osnovnoi[0].poluchtochka8(0)+" Y"+osnovnoi[0].poluchtochka8(1)+" Z"+osnovnoi[0].poluchtochka8(2));
 
 
-       // for(int i=0;i<osnovnoi[0].lengthpix();i++) System.out.print(osnovnoi[0].pixels(0,i)+" "+osnovnoi[0].pixels(1,i)+";");
 
+
+        metodotobrathpix();
         System.out.println("ok");
     }
 
@@ -651,7 +652,7 @@ public class Controller {
                     tn[2]=j;
                     tk[0]=t3[0];tk[1]=t3[1];
                     //tk[2]=j;
-                    System.out.println();
+
                     if (Math.pow((t4[0])-t3[0],2)>=Math.pow((t4[1]-t3[1]),2)) {
 
                         for(int k=t2[2];k<t6[2];k++){
@@ -660,7 +661,7 @@ public class Controller {
                             x=(short)j;
                             y=(short)((k-t32)/(t8[2]-t32)*(t8[1]-t4[1])+t4[1]);
                             z=(short)k;
-                            osnovnoi[i].dobavlpixels5(x,y,z);System.out.print(x+" "+y+" "+z+";");
+                            osnovnoi[i].dobavlpixels5(x,y,z);
 
 
                         }
@@ -671,7 +672,7 @@ public class Controller {
                             y=(short)k;
                             z=(short)((k-t31)/(t8[1]-t31)*(t8[2]-t4[2])+t4[2]);
 
-                            osnovnoi[i].dobavlpixels5(x,y,z);System.out.print(x+" "+y+" "+z+";");
+                            osnovnoi[i].dobavlpixels5(x,y,z);
 
                         }
                     }
@@ -817,7 +818,7 @@ public class Controller {
                             x = (short)((k - t12) / (t5[2] - t12) * (t5[0] - t1[0]) + t1[0]);
                             y = (short) j;
                             z = (short) k;
-                            osnovnoi[i].dobavlpixels3(x, y, z);
+                            osnovnoi[i].dobavlpixels2(x, y, z);
 
 
                         }
@@ -828,7 +829,7 @@ public class Controller {
                             y = (short) j;
                             z = (short) ((k - t10) / (t5[0] - t10) * (t5[2] - t1[2]) + t1[2]);
 
-                            osnovnoi[i].dobavlpixels3(x, y, z);
+                            osnovnoi[i].dobavlpixels2(x, y, z);
 
                         }
                     }
@@ -879,6 +880,19 @@ public class Controller {
 
     }
 
+    public void metodotobrathpix() {
+
+     for(int i=0;i<osnovnoi[0].lengthpix();i++){
+            System.out.print(" x"+osnovnoi[0].pixels(0,i)+";");
+     }System.out.println();
+        for(int i=0;i<osnovnoi[0].lengthpix();i++){
+            System.out.print(" y"+osnovnoi[0].pixels(1,i)+";");
+        }System.out.println();
+        for(int i=0;i<osnovnoi[0].lengthpix();i++){
+            System.out.print(" z"+osnovnoi[0].pixels(2,i)+";");
+        }System.out.println();
 
 
+
+    }
 }
