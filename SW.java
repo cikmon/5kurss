@@ -4,7 +4,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by cik on 05.06.2017.
@@ -15,11 +17,16 @@ public class SW {
     private int LrazmerKorpusa ;
     private int ThicknessRrazmerKorpusa ;
     private ArrayList<String> macros;
-    private Ploskosti[] ploskosti;
+    private Ploskosti[] osnovnoi;
     int n;
-    public SW(Ploskosti[] ploskosti,int n){
-        this.ploskosti=ploskosti;
+    public SW(Ploskosti[] osnovnoi,int n, int WrazmerKorpusa,int HrazmerKorpusa,int LrazmerKorpusa,int ThicknessRrazmerKorpusa){
+        this.osnovnoi=osnovnoi;
         this.n=n;
+        this.WrazmerKorpusa=WrazmerKorpusa;
+        this.HrazmerKorpusa=HrazmerKorpusa;
+        this.LrazmerKorpusa=LrazmerKorpusa;
+        this.ThicknessRrazmerKorpusa=ThicknessRrazmerKorpusa;
+
     }
 
     public void save(){
@@ -29,6 +36,77 @@ public class SW {
         fc.setFileFilter(filter);
         if ( fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION ) {
             try ( FileWriter fw = new FileWriter(fc.getSelectedFile()) ) {
+//korpus
+             fw.write("' ******************************************************************************\n" +
+                     "' C:\\Users\\cik\\AppData\\Local\\Temp\\swx7556\\Macro1.swb - macro recorded on 06/03/17 by cik\n" +
+                     "' ******************************************************************************\n" +
+                     "Dim swApp As Object\n" +
+                     "\n" +
+                     "Dim Part As Object\n" +
+                     "Dim boolstatus As Boolean\n" +
+                     "Dim longstatus As Long, longwarnings As Long\n" +
+                     "\n" +
+                     "Sub main()\n" +
+                     "\n" +
+                     "Set swApp = _\n" +
+                     "Application.SldWorks\n" +
+                     "\n" +
+                     "Set Part = swApp.NewDocument(\"C:\\ProgramData\\SolidWorks\\SolidWorks 2014\\templates\\gost-part.prtdot\", 0, 0, 0)\n" +
+                     "swApp.ActivateDoc2 \"Äåòàëü1\", False, longstatus\n" +
+                     "Set Part = swApp.ActiveDoc\n" +
+                     "Dim myModelView As Object\n" +
+                     "Set myModelView = Part.ActiveView\n" +
+                     "myModelView.FrameState = swWindowState_e.swWindowMaximized\n" +
+                     "Part.ClearSelection2 True\n" +
+                     "Dim vSkLines As Variant\n"+
+
+                     "vSkLines = Part.SketchManager.CreateCornerRectangle(0, 0, 0,"+ ((double)WrazmerKorpusa/1000)+", "+((double)HrazmerKorpusa/1000)+", 0)\n" +
+                     "Part.ClearSelection2 True\n" +
+                     "boolstatus = Part.Extension.SelectByID2(\"Line2\", \"SKETCHSEGMENT\", 0, 0, 0, False, 0, Nothing, 0)\n" +
+                     "boolstatus = Part.Extension.SelectByID2(\"Line1\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n" +
+                     "boolstatus = Part.Extension.SelectByID2(\"Line4\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n" +
+                     "boolstatus = Part.Extension.SelectByID2(\"Line3\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n" +
+                     "Dim myFeature As Object\n" +
+                     "'1.31 z\n" +
+                     "Set myFeature = Part.FeatureManager.FeatureExtrusion2(True, False, False, 0, 0, "+LrazmerKorpusa/1000+", 0.01, False, False, False, False, 1.74532925199433E-02, 1.74532925199433E-02, False, False, False, False, True, True, True, 0, 0, False)\n" +
+                     "Part.SelectionManager.EnableContourSelection = False\n" +
+                     "Part.ClearSelection2 True\n" +
+                     "boolstatus = Part.Extension.SelectByID2(\"Áîáûøêà-Âûòÿíóòü1\", \"BODYFEATURE\", 0, 0, 0, False, 0, Nothing, 0)\n" +
+                     "'0.005 5mm tolsh korpusa\n" +
+                     "Part.InsertFeatureShell "+(double)ThicknessRrazmerKorpusa/1000+", False\n" +
+                     "'save\n" +
+                     "Part.ShowNamedView2 \"*Eciiao?ey\", 7\n" +
+                     "Part.ShowNamedView2 \"*Eciiao?ey\", 7\n" +
+                     "longstatus = Part.SaveAs3(\"E:\\swproject\\swp\\korpus.SLDPRT\", 0, 2)\n" +
+                     "swApp.CloseDoc \"korpus.SLDPRT\"\n" +
+                     "swApp.CloseDoc \"Äåòàëü1\"\n");
+             for(int i=0;i<n;i++){
+                 fw.write("Set Part = swApp.NewDocument(\"C:\\ProgramData\\SolidWorks\\SolidWorks 2014\\templates\\gost-part.prtdot\", 0, 0, 0)\n" +
+                         "swApp.ActivateDoc2 \"Äåòàëü"+(i+2)+"\", False, longstatus\n"+
+                 "vSkLines = Part.SketchManager.CreateCornerRectangle(0, 0, 0, "+(double)osnovnoi[i].width()/1000+", "+(double)osnovnoi[i].haight()/1000+", 0)\n" +
+                         "Part.ClearSelection2 True\n" +
+                         "boolstatus = Part.Extension.SelectByID2(\"Line2\", \"SKETCHSEGMENT\", 0, 0, 0, False, 0, Nothing, 0)\n" +
+                         "boolstatus = Part.Extension.SelectByID2(\"Line1\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n" +
+                         "boolstatus = Part.Extension.SelectByID2(\"Line4\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n" +
+                         "boolstatus = Part.Extension.SelectByID2(\"Line3\", \"SKETCHSEGMENT\", 0, 0, 0, True, 0, Nothing, 0)\n"+
+                 "Set myFeature = Part.FeatureManager.FeatureExtrusion2(True, False, False, 0, 0, "+(double)osnovnoi[i].lenght()/1000+", 0.01, False, False, False, False, 1.74532925199433E-02, 1.74532925199433E-02, False, False, False, False, True, True, True, 0, 0, False)\n" +
+                         "Part.SelectionManager.EnableContourSelection = False\n" +
+                         "Part.ShowNamedView2 \"*Èçîìåòðèÿ\", 7\n" +
+                         "Part.ShowNamedView2 \"*Èçîìåòðèÿ\", 7\n" +
+                         "longstatus = Part.SaveAs3(\"E:\\swproject\\swp\\detal"+(i+1)+".SLDPRT\", 0, 2)\n" +
+                         "Part.ClearSelection2 True\n" +
+                         "Set Part = Nothing\n" +
+                         "swApp.CloseDoc \"Äåòàëü"+(i+2)+"\"\n");
+
+             }
+
+
+                fw.write("End Sub");
+                fw.close();
+
+
+
+
                /* fw.write("Widht Ploskost №1;Haight Ploskost №1;Widht Ploskost №2;Haight Ploskost №2;Widht Ploskost №3;Haight Ploskost №3;" +
                         "Widht Ploskost №4;Haight Ploskost №4;Widht Ploskost №5;Haight Ploskost №5;Widht Ploskost №6;Haight Ploskost №6 \r\n");
                 fw.write(WrazmerPloskost1+";"+HrazmerPloskost1+";"+WrazmerPloskost1+";"+ HrazmerPloskost2+";"+ WrazmerPloskost3+";"+ HrazmerPloskost3+";"+

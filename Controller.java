@@ -165,7 +165,7 @@ public class Controller {
 
     @FXML
     private void handleSave() {
-        SW sw=new SW(osnovnoi,n);
+        SW sw=new SW(osnovnoi,n,WrazmerKorpusa,HrazmerKorpusa,LrazmerKorpusa,ThicknessRrazmerKorpusa);
         sw.save();
     }
 
@@ -180,8 +180,8 @@ public class Controller {
         //metodproverkaustanovl();
         metodInstalKoord();
        // metodrazmeshangletochki();
-       // metodInstallingBeside();
-       // metodInstalOthers();
+        metodInstallingBeside();
+        metodInstalOthers();
       //  metodproverkaustanovl();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText("Расчеты завершились.");
@@ -284,17 +284,17 @@ public class Controller {
                     y <= ThicknessRrazmerKorpusa ||y + height >= HrazmerKorpusa -ThicknessRrazmerKorpusa||
                     z <= ThicknessRrazmerKorpusa || z + length >= LrazmerKorpusa-ThicknessRrazmerKorpusa) {
 
-
+/*
                 System.out.println(z+" y="+y+" z="+z);
                 System.out.println(width+" "+height+" "+length);
                 System.out.println(WrazmerKorpusa+" "+HrazmerKorpusa+" "+LrazmerKorpusa);
                 System.out.println(osnovnoi[i].coordX()+" jsn y="+osnovnoi[i].coordY()+" "+osnovnoi[i].coordZ());
                 System.out.println(osnovnoi[i].width()+" "+osnovnoi[i].haight()+" "+osnovnoi[i].lenght());
-
+*/
                 r = false;
-                Alert alert = new Alert(AlertType.INFORMATION);
+              /*  Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("Деталь №"+i+" налазит на другие детали");
-                alert.showAndWait();
+                alert.showAndWait();*/
                 break exit;
             }
 
@@ -322,8 +322,9 @@ public class Controller {
     }
 
     public void metodInstallingBeside() {
+        System.out.println(nustnovl+"  nustanovl");
         for (int i = 0; i < bd.length; i++) {
-            if (bd[i].ryadom() != -1000) {
+            if (bd[i].ryadom() != -1000&bd[i].coordX()==-1000) {
                 for (int j = 0; j < nustnovl; j++) {
                     String str = osnovnoi[j].names();
                     String wsw = String.valueOf(str.charAt(1));
@@ -347,7 +348,7 @@ public class Controller {
                                                 bd[i].angleX(), bd[i].angleY(), bd[i].angleZ());
                                         nustnovl++;
                                         break exit;
-                                    }
+                                    }else
                                     //слева
                                     if (proverkaa(osnovnoi[j].coordX() - bd[i].width() - kx, osnovnoi[j].coordY() + ky, osnovnoi[j].coordZ() + kz, bd[i].width(), bd[i].haight(), bd[i].length())) {
                                         osnovnoi[nustnovl] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(),
@@ -355,7 +356,7 @@ public class Controller {
                                                 bd[i].angleX(), bd[i].angleY(), bd[i].angleZ());
                                         nustnovl++;
                                         break exit;
-                                    }
+                                    }else
                                     //сверху
                                     if (proverkaa(osnovnoi[j].coordX() + kx, osnovnoi[j].coordY() + osnovnoi[j].haight() + ky, osnovnoi[j].coordZ() + kz, bd[i].width(), bd[i].haight(), bd[i].length())) {
                                         osnovnoi[nustnovl] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(),
@@ -363,7 +364,7 @@ public class Controller {
                                                 bd[i].angleX(), bd[i].angleY(), bd[i].angleZ());
                                         nustnovl++;
                                         break exit;
-                                    }
+                                    }else
                                     //снизу
                                     if (proverkaa(osnovnoi[j].coordX() + kx, osnovnoi[j].coordY() - bd[i].haight() - ky, osnovnoi[j].coordZ() + kz, bd[i].width(), bd[i].haight(), bd[i].length())) {
                                         osnovnoi[nustnovl] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(),
@@ -371,7 +372,7 @@ public class Controller {
                                                 bd[i].angleX(), bd[i].angleY(), bd[i].angleZ());
                                         nustnovl++;
                                         break exit;
-                                    }
+                                    }else
                                     //сзади
                                     if (proverkaa(osnovnoi[j].coordX() + kx, osnovnoi[j].coordY() + ky, osnovnoi[j].coordZ() + bd[i].length() + kz, bd[i].width(), bd[i].haight(), bd[i].length())) {
                                         osnovnoi[nustnovl] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(),
@@ -379,7 +380,7 @@ public class Controller {
                                                 bd[i].angleX(), bd[i].angleY(), bd[i].angleZ());
                                         nustnovl++;
                                         break exit;
-                                    }
+                                    }else
                                     //спереди
                                     if (proverkaa(osnovnoi[j].coordX() + kx, osnovnoi[j].coordY() + ky, osnovnoi[j].coordZ() - bd[j].length() - kz, bd[i].width(), bd[i].haight(), bd[i].length())) {
                                         osnovnoi[nustnovl] = new Ploskosti(bd[i].names(), bd[i].width(), bd[i].haight(), bd[i].length(),
@@ -404,6 +405,7 @@ public class Controller {
 
 
         }
+        System.out.println(nustnovl+"  nustanovl");
 
     }
 
